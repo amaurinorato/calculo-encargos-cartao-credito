@@ -1,0 +1,164 @@
+<html>
+
+	<head>        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    </head>
+    <body>
+		<form>
+			<div class="row mb-6 px-5 mt-4">
+				<div class="col">
+					<div class="form-outline">
+						<label class="form-label" for="valorFatura">Valor Fatura</label>
+						<input type="text" id="valorFatura" placeholder="Valor total da última fatura fechada" class="form-control" />
+					</div>
+			  	</div>
+				<div class="col">
+					<div class="form-outline">
+						<label class="form-label" for="diasAtraso">Dias atraso até o pagamento</label>
+						<input type="text" id="diasAtraso" placeholder="Quantidade de dias em atraso até o pagamento da fatura" class="form-control" />
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-outline">
+						<label class="form-label" for="valorEncargos">Valor Encargos Rotativo Ao Mês</label>
+						<input type="text" id="valorEncargos" class="form-control" placeholder="Valor dos encargos da fatura. Geralmente é a taxa do rotativo" />
+					</div>
+				</div>
+			</div>
+			
+			<div class="row mb-4 px-5 mt-4">
+				<div class="col">
+					<div class="form-outline">
+						<label class="form-label" for="valorMora" title="Valor da mora. Geralmente 1%">Valor Mora Ao Mês</label>
+						<input type="text" id="valorMora" class="form-control" value="1" title="Valor da mora. Geralmente 1%"/>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-outline">
+						<label class="form-label" for="valorMulta" title="Valor da multa. Geralmente 2%">Valor Multa</label>
+						<input type="text" id="valorMulta" class="form-control" value="2" title="Valor da mora. Geralmente 2%"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mb-4 px-5 mt-4">
+				<div class="col">
+					<div class="form-outline">
+						<label class="form-label" for="valorIofFixo" title="Valor do IOF fixo. Geralmente 0,38%">Valor IOF Fixo</label>
+						<input type="text" id="valorIofFixo" class="form-control" value="0.38" />
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-outline">
+						<label class="form-label" for="valorIofDia" title="Valor do IOF por dia de atraso. Geralmente 0,0082%">Valor IOF Ao Dia</label>
+						<input type="text" id="valorIofDia" class="form-control" value="0.0082" title="Valor do IOF por dia de atraso. Geralmente 0,0082%"/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row mb-1 px-5 mt-4">
+				<div class="col">
+					<div class="form-outline">
+						<button type="button" class="btn btn-primary btn-block form-control" id="calcular">Calcular</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mb-8 px-5 mt-4">
+				<div class="col">
+					<div class="form-outline">
+						<label title="Soma de todos os encargos, fixos e diários" class="form-label" for="totalEncargos">Total Encargos</label>
+						<input type="text" id="totalEncargos" class="form-control" disabled/>
+					</div>
+			  	</div>
+				<div class="col">
+					<div class="form-outline">
+						<label title="Encargos por dia de atraso(Mora + Rotativo + IOF diário)" class="form-label" for="encargosDia">Total Encargos por dia</label>
+						<input type="text" id="encargosDia" class="form-control" title="Encargos por dia de atraso(Mora + Rotativo + IOF diário)" disabled/>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-outline">
+						<label title="Encargos Fixos (Multa + IOF Fixo)" class="form-label" for="encargosFixos">Total Encargos Fixos</label>
+						<input type="text" id="encargosFixos" class="form-control" title="Encargos Fixos (Multa + IOF Fixo)" disabled/>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-outline">
+						<label title="Soma de todos os encargos + valor fatura fechada" class="form-label" for="resultado">Total a ser pago</label>
+						<input title="Soma de todos os encargos + valor fatura fechada" type="text" id="resultado" class="form-control" style="background-color: lightcoral;" disabled/>
+					</div>
+				</div>
+			</div>
+
+		</form>
+		<footer class="p-4 px-5">
+			<div class="text-center p-4 px-5" style="background-color: rgba(0, 0, 0, 0.05);">
+				© 2021 Copyright: Amauri Norato
+		  	</div>
+			<div class="text-center">
+				<p class="mt-4">Contact:</p>
+				<a class="text-reset fw-bold" href="https://linkedin.com/in/amauri-norato" target="_blank">
+					<button type="button" class="btn btn-primary btn-floating mx-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+							<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+						</svg>
+					</button>
+				</a>
+			
+				<a class="text-reset fw-bold" href="https://facebook.com/amauri-norato" target="_blank">
+					<button type="button" class="btn btn-primary btn-floating mx-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+							<path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+						</svg>
+					</button>
+				</a>
+			
+				<a class="text-reset fw-bold" href="https://twitter.com/amaurinorato" target="_blank">
+					<button type="button" class="btn btn-primary btn-floating mx-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+							<path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+						</svg>
+					</button>
+				</a>
+			
+				<a class="text-reset fw-bold" href="https://github.com/amaurinorato" target="_blank">
+					<button type="button" class="btn btn-primary btn-floating mx-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+							<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+						</svg>
+					</button>
+				</a>
+			</div>
+		</footer>
+			
+	<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script> 
+		$("#calcular").click(function() {
+			let diasMes = 30
+			let cem = 100
+			let diasAtraso = Number($("#diasAtraso").val().replaceAll(",", "."))
+			let valorFatura = Number($("#valorFatura").val().replaceAll(",", "."))
+			let valorMora = Number($("#valorMora").val().replaceAll(",", "."))
+			let valorMulta = Number($("#valorMulta").val().replaceAll(",", "."))
+			let valorEncargos = Number($("#valorEncargos").val().replaceAll(",", "."))
+			let valorIofDia = Number($("#valorIofDia").val().replaceAll(",", "."))
+			let valorIofFixo = Number($("#valorIofFixo").val().replaceAll(",", "."))
+			
+			let totalMora = valorMora / diasMes / 100 * diasAtraso * valorFatura
+			let totalMulta = valorMulta / 100 * valorFatura
+			let totalEncargos = valorEncargos / 100 / 30 * diasAtraso * valorFatura
+			let totalIofDia = valorIofDia / 100 * diasAtraso * valorFatura
+			let totalIofFixo = valorIofFixo / 100 * valorFatura
+			let somaEncargos = totalMora + totalMulta + totalEncargos + totalIofDia + totalIofFixo
+			let somaEncargosDia = (valorMora / 100 / 30 * valorFatura) + (valorIofDia / 100 * valorFatura) + (valorEncargos / 100 / 30 * valorFatura) 
+			let somaEncargosFixos = totalMulta + totalIofFixo
+
+			$("#totalEncargos").val(somaEncargos)
+			$("#resultado").val(somaEncargos + valorFatura)
+			$("#encargosDia").val(somaEncargosDia)
+			$("#encargosFixos").val(somaEncargosFixos)
+		})	
+	</script>
+</html>

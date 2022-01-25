@@ -19,3 +19,9 @@ Segue um breve descritivo de cada campo e fórmulas utilizadas:
 * **Multa**: `taxaMulta / 100 * valorFatura`
 * **IOF Fixo**: `taxaIofFixo / 100 * valorFatura`
 * **IOF diário**: `taxaIofDiario / 100 * diasAtraso * valorFatura`
+
+## Resultados
+* **Total Encargos**: soma de todos os encargos que o cliente pagará por ter atrasado. Geralmente esse valor é cobrado na próxima fatura
+* **Total Encargos por dia**: valor que o cliente pagará por dia de atraso, desconsiderando as despesas fixas(multa e IOF fixo).
+* **Total Encargos Fixos**: valor das despesas fixas(IOF Fixo + Multa) que o cliente pagar, caso atrase a fatura. Não importando a quantidade de dias.
+* **Total a ser pago**: Valor total que o cliente pagará, considerando a fatura em atraso + todos os encargos 
